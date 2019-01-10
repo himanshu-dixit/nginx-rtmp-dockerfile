@@ -26,17 +26,17 @@ RUN apt-get update && \
 
 # get nginx source
 WORKDIR /src
-RUN wget http://nginx.org/download/nginx-1.7.5.tar.gz && \
-  tar zxf nginx-1.7.5.tar.gz && \
-  rm nginx-1.7.5.tar.gz && \
+RUN wget http://nginx.org/download/nginx-1.14.2.tar.gz && \
+  tar zxf nginx-1.14.2.tar.gz && \
+  rm nginx-1.14.2.tar.gz && \
 # get nginx-rtmp module
-  wget https://github.com/arut/nginx-rtmp-module/archive/v1.1.6.tar.gz && \
-  tar zxf v1.1.6.tar.gz && \
-  rm v1.1.6.tar.gz
+  wget https://github.com/arut/nginx-rtmp-module/archive/v1.2.1.tar.gz && \
+  tar zxf v1.2.1.tar.gz && \
+  rm v1.2.1.tar.gz
 
 # compile nginx
-WORKDIR /src/nginx-1.7.5
-RUN ./configure --add-module=/src/nginx-rtmp-module-1.1.6 \
+WORKDIR /src/nginx-1.14.2
+RUN ./configure --add-module=/src/nginx-rtmp-module-1.2.1 \
   --conf-path=/config/nginx.conf \
   --error-log-path=/logs/error.log \
   --http-log-path=/logs/access.log && \
